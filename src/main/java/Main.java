@@ -25,15 +25,33 @@ public class Main {
             dispOptions();
             Scanner sc = new Scanner(System.in);
             int userChoice = -1;
-            try {
+            try
+            {
                 userChoice = sc.nextInt();
-            } catch (InputMismatchException e) {
+                switch (userChoice)
+                {
+                    case 1:
+                        System.out.println("The files in your repository are listed below:\n\n");
+                        break;
+                    case 2:
+                        innerLoop();
+                        break;
+                    case 3:
+                        isRunning = false;
+                        break;
+                    default:
+                        System.out.println("Please input a valid number in the following format (ex:) 2");
+                }
+            }
+            catch (InputMismatchException e)
+            {
                 System.out.println("\nPlease input a valid number in the following format (ex:) 2\n");
             }
-            System.out.println(userChoice);
-            if(userChoice == 3)
-                isRunning = false;
         } while (isRunning);
+    }
+    private static void innerLoop()
+    {
+        System.out.println("Inner Loop");
     }
     public static void main(String[] args)
     {
