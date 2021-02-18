@@ -70,23 +70,27 @@ public class Main {
                 switch (innerChoice)
                 {
                     case 1:
+                        System.out.println("Add File");
                         break;
                     case 2:
+                        System.out.println("Delete File");
                         break;
                     case 3:
+                        System.out.println("Search File");
                         break;
                     case 4:
-                        System.out.println("/////////");
+                        System.out.println("\n/////////");
                         System.out.println("Returning");
-                        System.out.println("/////////");
+                        System.out.println("/////////\n");
                         isInner = false;
                         break;
                     default:
+                        System.out.println("Please input a valid number in the following format (ex:) 2");
                 }
             }
             catch (InputMismatchException e)
             {
-
+                System.out.println("\nPlease input a valid number in the following format (ex:) 2\n");
             }
         }
         while (isInner);
