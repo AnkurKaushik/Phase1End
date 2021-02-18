@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     static boolean isRunning = true;
+    static boolean isInner = false;
 
     private static void welcomeScreen()
     {
@@ -34,6 +35,7 @@ public class Main {
                         System.out.println("The files in your repository are listed below:\n\n");
                         break;
                     case 2:
+                        isInner = true;
                         innerLoop();
                         break;
                     case 3:
@@ -49,9 +51,45 @@ public class Main {
             }
         } while (isRunning);
     }
+    private static void innerOptions()
+    {
+        System.out.println("Select an option from the list below:");
+        System.out.println(" 1. Add File\n 2. Delete File\n 3. Search File\n 4. Return");
+    }
     private static void innerLoop()
     {
-        System.out.println("Inner Loop");
+        System.out.println("");
+        do
+        {
+            innerOptions();
+            Scanner sc = new Scanner(System.in);
+            int innerChoice = -1;
+            try
+            {
+                innerChoice = sc.nextInt();
+                switch (innerChoice)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        System.out.println("/////////");
+                        System.out.println("Returning");
+                        System.out.println("/////////");
+                        isInner = false;
+                        break;
+                    default:
+                }
+            }
+            catch (InputMismatchException e)
+            {
+
+            }
+        }
+        while (isInner);
     }
     public static void main(String[] args)
     {
