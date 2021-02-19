@@ -33,9 +33,13 @@ public class Main {
                 {
                     case 1:
                         System.out.println("The files in your repository are listed below:\n\n");
+                        Directory.returnElements();
                         break;
                     case 2:
                         isInner = true;
+                        System.out.println("\n///////");
+                        System.out.println("Details");
+                        System.out.println("///////\n");
                         innerLoop();
                         break;
                     case 3:
@@ -58,7 +62,6 @@ public class Main {
     }
     private static void innerLoop()
     {
-        System.out.println("");
         do
         {
             innerOptions();
@@ -70,7 +73,17 @@ public class Main {
                 switch (innerChoice)
                 {
                     case 1:
-                        System.out.println("Add File");
+                        try
+                        {
+                            System.out.println("\nEnter the name of the File you would like to add:");
+                            System.out.println(" Note: Names will be converted to Lower Case");
+                            sc = new Scanner(System.in);
+                            Directory.addFile(sc.nextLine());
+                        }
+                        catch (InputMismatchException e)
+                        {
+                            System.out.println("Please input a valid name in the form of a String type");
+                        }
                         break;
                     case 2:
                         System.out.println("Delete File");
