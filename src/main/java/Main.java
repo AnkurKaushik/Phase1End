@@ -82,11 +82,21 @@ public class Main {
                         }
                         catch (InputMismatchException e)
                         {
-                            System.out.println("Please input a valid name in the form of a String type");
+                            System.out.println("Please input a valid name in the form of a String");
                         }
                         break;
                     case 2:
-                        System.out.println("Delete File");
+                        try
+                        {
+                            System.out.println("\nEnter the name of the File you would like to delete:");
+                            System.out.println(" Note: Names will be converted to Lower Case");
+                            sc = new Scanner(System.in);
+                            Directory.deleteFile(sc.nextLine());
+                        }
+                        catch (InputMismatchException e)
+                        {
+                            System.out.println("Please input a valid name in the form of a String type");
+                        }
                         break;
                     case 3:
                         System.out.println("Search File");
