@@ -46,7 +46,7 @@ public class Main {
                         isRunning = false;
                         break;
                     default:
-                        System.out.println("Please input a valid number in the following format (ex:) 2");
+                        System.out.println("\nPlease input a valid number between 1 and 3\n");
                 }
             }
             catch (InputMismatchException e)
@@ -58,7 +58,7 @@ public class Main {
     private static void innerOptions()
     {
         System.out.println("Select an option from the list below:");
-        System.out.println(" 1. Add File\n 2. Delete File\n 3. Search File\n 4. Return");
+        System.out.println(" 1. Add File\n 2. Delete File\n 3. Search File\n 4. Edit File\n 5. View File\n 6. Return");
     }
     private static void innerLoop()
     {
@@ -99,16 +99,56 @@ public class Main {
                         }
                         break;
                     case 3:
-                        System.out.println("Search File");
+                        try
+                        {
+                            System.out.println("\nEnter the name of the File you would like to search:");
+                            System.out.println(" Note: Names will be converted to Lower Case");
+                            sc = new Scanner(System.in);
+                            Directory.searchFile(sc.nextLine());
+                        }
+                        catch (InputMismatchException e)
+                        {
+                            System.out.println("Please input a valid name in the form of a String");
+                        }
                         break;
                     case 4:
+                        try
+                        {
+                            System.out.println("\nEnter the name of the File you would like to edit:");
+                            System.out.println(" Note: File names will be converted to Lower Case");
+                            sc = new Scanner(System.in);
+                            String name = sc.nextLine();
+                            System.out.println("\nEnter the text to be added to the file:\n");
+                            sc = new Scanner(System.in);
+                            Directory.editFile(name, sc.nextLine());
+                        }
+                        catch (InputMismatchException e)
+                        {
+                            System.out.println("Please input a String");
+                        }
+                        break;
+                    case 5:
+                        try
+                        {
+                            System.out.println("\nEnter the name of the File you would like to view:");
+                            System.out.println(" Note: File names will be converted to Lower Case");
+                            sc = new Scanner(System.in);
+                            String name = sc.nextLine();
+                            Directory.viewFile(name);
+                        }
+                        catch (InputMismatchException e)
+                        {
+                            System.out.println("Please input a String");
+                        }
+                        break;
+                    case 6:
                         System.out.println("\n/////////");
                         System.out.println("Returning");
                         System.out.println("/////////\n");
                         isInner = false;
                         break;
                     default:
-                        System.out.println("Please input a valid number in the following format (ex:) 2");
+                        System.out.println("\nPlease input a valid number between 1 and 6\n");
                 }
             }
             catch (InputMismatchException e)
