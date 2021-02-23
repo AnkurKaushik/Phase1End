@@ -137,6 +137,7 @@ public class Directory {
     }
     public static void editFile(String name, String contents)
     {
+        //searches whole list, if file is found then adds to file contents
         for(file f : fileList)
             if(f.name.equals(name))
             {
@@ -144,11 +145,12 @@ public class Directory {
                 System.out.println("\nThe contents of " + name + " were updated");
                 return;
             }
-
+        //file not in list
         System.out.println("\nError: File not Found\n");
     }
     public static void viewFile(String name)
     {
+        //searches whole list if file found then each line of contents is printed
         for (file f : fileList)
             if(f.name.equals(name))
             {
@@ -156,7 +158,7 @@ public class Directory {
                 f.value.forEach(System.out::println);
                 return;
             }
-
+        //file is not in list
         System.out.println("\nError: File not Found\n");
     }
 }
