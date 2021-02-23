@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class Main {
     static boolean isRunning = true;
     static boolean isInner = false;
+    static String name = "";
+    static String key = "";
 
     private static void welcomeScreen()
     {
@@ -14,10 +16,31 @@ public class Main {
         System.out.println("   Ankur Kaushik");
         System.out.println("~~~~~~~~~~~~~~~~~~~~");
     }
+    private static void enterName()
+    {
+        System.out.println("\nPlease enter your name below");
+        Scanner sc = new Scanner(System.in);
+        name = sc.nextLine();
+        String randString = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < name.length(); i++)
+            sb.append(randString.charAt((int)(Math.random()*randString.length())));
+
+        key = sb.toString();
+        System.out.println("\nYour Repository key is: " + key + "\n");
+    }
     private static void dispOptions()
     {
         System.out.println("Select an option from the list below:");
         System.out.println(" 1. Return Files\n 2. User Interface Details (Add, Delete, Search)\n 3. Close Application");
+    }
+    private static boolean checkKey()
+    {
+        System.out.println("\nPlease enter your key below to proceed:");
+        System.out.println(" Note: Keys are case sensitive\n");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine().equals(key);
     }
     private static void outerLoop()
     {
@@ -36,11 +59,14 @@ public class Main {
                         Directory.returnElements();
                         break;
                     case 2:
-                        isInner = true;
-                        System.out.println("\n///////");
-                        System.out.println("Details");
-                        System.out.println("///////\n");
-                        innerLoop();
+                        if(checkKey())
+                        {
+                            isInner = true;
+                            System.out.println("\n///////");
+                            System.out.println("Details");
+                            System.out.println("///////\n");
+                            innerLoop();
+                        }
                         break;
                     case 3:
                         isRunning = false;
@@ -161,6 +187,7 @@ public class Main {
     public static void main(String[] args)
     {
         welcomeScreen();
+        enterName();
         outerLoop();
 
     }
